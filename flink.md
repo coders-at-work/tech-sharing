@@ -1,4 +1,4 @@
-1. Flink 是 Apache 旗下的一个开源项目，是一个分布式的 ***流式数据*** 和 ***批量数据*** 处理的 ***平台***。它的核心是一个流式数据处理的引擎，然后在其上，构建了批量数据处理的功能和接口。Flink 运行于 jvm 之上，提供了 scala 和 java 的 api.
+1. Flink 是 Apache 旗下的一个开源项目，是一个分布式的 ** 流式数据 ** 和 ** 批量数据 ** 处理的 ** 平台 **。它的核心是一个流式数据处理的引擎，然后在其上，构建了批量数据处理的功能和接口。Flink 运行于 jvm 之上，提供了 scala 和 java 的 api.
 2. 流式数据处理和传统的批量数据处理或数据库的区别：
     1. 和批量数据处理的区别
         * 数据量是无限的
@@ -40,9 +40,9 @@
 5. Flink 应用程序概述
     1. Flink 应用程序的基本结构
         1. 获取（构造）一个 *execution environment* 实例
-        2. 指定 source operator
+        2. 指定 source operators
         3. 指定 Transformation Operators
-        4. 指定 sing operator
+        4. 指定 sink operators
         5. 把应用程序，通过 *execution environment* 实例，提交到 jobmanager
     2. Flink 应用程序的部署方式
         * 应用程序自主部署: 应用程序在运行过程中，把数据处理任务提交到 jobmanager
