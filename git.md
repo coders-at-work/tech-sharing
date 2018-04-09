@@ -83,3 +83,14 @@
     - 通配符 git show-branch 'big/\*'
     - git check-ref-format
 2. git branch <branch-name> [starting-commit]
+
+
+## git diff
+1. 三个文件存储空间之间的比较
+    - working directory VS index
+    - working directory VS repository
+    - index VS repository
+    - repository VS repository
+2. git diff 与 git log 的 commit range 的区别
+3. git diff <path-or-file>
+4. pickaxe -- git diff -S
