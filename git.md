@@ -59,7 +59,7 @@
     - 修改: git commit <file>, git commit -a
     - 删除: git rm
     - git mv = mv, git rm, git add
-3. 从 repostiroty 到 index
+3. 从 repostiroty 到 index, 从 index 到　working directory
     - git checkout
     - git reset
 4. 直接改变 index: git rm --cached
@@ -94,3 +94,9 @@
 2. git diff 与 git log 的 commit range 的区别
 3. git diff <path-or-file>
 4. pickaxe -- git diff -S
+
+## merge
+1. git log --graph
+   git log --merge --left-right -p
+2. conflict and index
+3. merge strategy
