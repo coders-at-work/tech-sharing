@@ -95,8 +95,24 @@
 3. git diff <path-or-file>
 4. pickaxe -- git diff -S
 
+
 ## merge
 1. git log --graph
    git log --merge --left-right -p
 2. conflict and index
 3. merge strategy
+
+
+## alter commit
+1. 修改 commit history
+    - git reset
+2. 增加新的 commit
+    - get cherry-pick
+    - git revert
+3. get reset 和 git checkout 的区别
+4. get rebase
+    - git rebase -i
+5. git merge, git cherry-pick, git rebase 的区别
+    - git merge: 合而为一
+    - git cherry-pick: 在自己的分支上生长
+    - git rebase: 嫁接到别的分支上
