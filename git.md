@@ -116,3 +116,11 @@
     - git merge: 合而为一
     - git cherry-pick: 在自己的分支上生长
     - git rebase: 嫁接到别的分支上
+
+
+## stash and reflog
+1. git stash
+2. git relog
+    - qualified name: HEAD@{1}
+    - git reflog expire
+3. git gc
