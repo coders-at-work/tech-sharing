@@ -124,3 +124,33 @@
     - qualified name: HEAD@{1}
     - git reflog expire
 3. git gc
+
+
+## git remote
+###一. repository type
+1. bare
+2. development(nonbare)
+###二. git clone
+1. development mode
+    - remote local topic branch -> remote-tracking branch
+    - remote tags -> tags
+    - remote objects -> objects
+    - remote repository named as 'origin' by default
+    - config fetch refspec for origin remote
+2. bare mode: --bare
+###三. git remote
+1. git remote, .git/config, git config
+###四. branch type
+1. remote branch
+2. local branch
+    - remote-tracking branch: refs/remotes
+    - local-tracking branch: refs/heads
+    - topic branch(development branch): refs/heads
+###五. 引用其它 repository
+1. remote url
+2. refspec
+    - refspec: 'source:dest'
+    - fetch spec
+    - push spec
+3. example
+4. git pull, git fetch, git push
