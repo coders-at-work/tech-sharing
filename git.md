@@ -154,3 +154,31 @@
     - push spec
 3. example
 4. git pull, git fetch, git push
+###六. remote development cycle
+例子
+###七. remote configuration
+1. git remote
+    - git remote add
+    - git remote update
+    - git remote show
+    - git remote rm
+    - git remote prune
+    - git remote update --prune *remote-name*
+    - git branch -r -d origin/dev
+2. git config
+    - git config remote.<remote-name>.url ''
+    - git config remote.<remote-name>.push '+refs/heads/\*:refs/heads/\*'
+3. manual editing config file
+###八. working with tracking branches
+1. creating tracking branches
+    - git checkout -b <local-tracking-branch> --track <remote-tracking-branch>: local can be different with remote branch name
+    - git checkout --track <remote-tracking-branch>: local name matching remote branch name
+    - git checkout <local-tracking-branch>: local name matching unique remote branch name
+    - git branch --track <local-branch> <remote-branch>: create branch without checking out
+    - git branch --set-upstream <local-branch> <remote-branch>: setting upstream for existed local-branch
+###九. adding and deleting remote branches
+1. git push <remote> <source>
+2. git push <remote> <source>:<dest>
+    - git push upstream new_dev:new_dev
+    - git push upstream new_dev:refs/heads/new_dev
+3. git push <remote> :<dest>
