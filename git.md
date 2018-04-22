@@ -182,3 +182,20 @@
     - git push upstream new_dev:new_dev
     - git push upstream new_dev:refs/heads/new_dev
 3. git push <remote> :<dest>
+
+
+##Combining Projects
+1. 场景
+    - 多个项目 depend on 一个公共的项目
+    - 每个项目所 depend on 的公共项目的版本是不同的
+2. 通过 dependency 管理工具
+    - 方便
+    - 需要有工具和对应项目的包
+3. 单独的 git clone 和　.gitignore 的配合
+    - 灵活
+    - 可以 depend on 非 git 的 repository
+    - 需要自己保证所　depend on 的版本已经被 checkout
+4. git submodule
+    - 自动维护　depend on 的版本
+    - 命令复杂
+    - 会出现冲突
