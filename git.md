@@ -28,6 +28,11 @@
 6. git commit-tree
 7. git ls-files -s
 
+###五. git config
+1. repository config: git config
+2. personal config: git config --global
+3. system config: git config --system
+
 
 ## index 和文件存储
 ###一. 总述
