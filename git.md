@@ -33,22 +33,22 @@
 2. 引用: 直接或间接地引用一个 git object
 
 ###三. git 存储空间
-1. object store
+1. object store: GIT_DIR/objects
 2. index
     - a binary file
     - 临时的，可变的
     - 记录了某一时刻 repository 的整个结构
-3. 引用存储
+3. 引用存储: 主要在 GIT_DIR/refs；还有其它地方
 
 ###四. git 数据存储初探
 1. 初始没有 index 和　objects
     1. find .git/
     2. find .git/objects
 2. git add 会创建　blobs , 创建或修改 index，但不创建 tree
-    1. git add a
+    1. echo 'a' > a; git add a
     2. find .git, git cat-file -p <blob-a>
     3. git ls-files -s
-    4. git add b/bb/b
+    4. mkdir -p b/bb; echo 'b' > b/bb/b; git add b/bb/b
     5. find .git, git cat-file -p <blob-b>
     6. git ls-files -s
 3. git commit 会创建 trees 和 commit
@@ -58,11 +58,11 @@
     4. git cat-file -p <tree-b>
     5. git cat-file -p <tree-b/bb>
     6. git ls-files -s
-3. git cat-file -p <blob-id>
-4. git ls-files -s
-5. git write-tree
-6. git commit-tree
-7. git ls-files -s
+4. 不会创建 id 相同的 objects
+    1. find .git/objects
+    2. mkdir c; cp a c/; cp -r b/ c/
+    3. git add c/
+    4. find .git/objects
 
 ###五. git config
 1. repository config: git config
