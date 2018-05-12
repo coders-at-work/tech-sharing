@@ -12,6 +12,11 @@
         * commit
         * tag
     - object id
+    - git 对象的生成逻辑
+        1. 生成 header: <object-type> + ' ' + <content-size> + <byte\0>
+        2. storage-data = header + content
+        3. object-id = sha1(storage-data)
+        4. storage-data = compress(storage-data)
 2. 引用
 
 ###三. git 存储空间
