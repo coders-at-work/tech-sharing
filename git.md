@@ -8,20 +8,36 @@
 1. git 对象
     - 分类
         * blob
+            - file data
+            - 不包含任何元数据（包括文件名，模式）
         * tree
+            - 一层目录的结构
+            - 该层目录包含的 path, 其对应的 objcet-id 和 metadata
         * commit
+            - snapshot
+            - author, commiter, commit date, message, tree object, parents
         * tag
+            - human readable name to a specific object
+            - 不等同于 git tag
     - object id
+        * primary key
+        * sha1
+        * 160 bit value
+        * 用 40 个 16 进制字符表示
+    - immutable
     - git 对象的生成逻辑
         1. 生成 header: <object-type> + ' ' + <content-size> + <byte\0>
         2. storage-data = header + content
         3. object-id = sha1(storage-data)
         4. storage-data = compress(storage-data)
-2. 引用
+2. 引用: 直接或间接地引用一个 git object
 
 ###三. git 存储空间
 1. object store
 2. index
+    - a binary file
+    - 临时的，可变的
+    - 记录了某一时刻 repository 的整个结构
 3. 引用存储
 
 ###四. git 数据存储初探
