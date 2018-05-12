@@ -41,9 +41,24 @@
 3. 引用存储
 
 ###四. git 数据存储初探
-1. find .git/
-2. git add, find .git/objects
-3. git cat-file -p
+1. 初始没有 index 和　objects
+    1. find .git/
+    2. find .git/objects
+2. git add 会创建　blobs , 创建或修改 index，但不创建 tree
+    1. git add a
+    2. find .git, git cat-file -p <blob-a>
+    3. git ls-files -s
+    4. git add b/bb/b
+    5. find .git, git cat-file -p <blob-b>
+    6. git ls-files -s
+3. git commit 会创建 trees 和 commit
+    1. git commit
+    2. git cat-file -p <commit>
+    3. git cat-file -p <tree-top>
+    4. git cat-file -p <tree-b>
+    5. git cat-file -p <tree-b/bb>
+    6. git ls-files -s
+3. git cat-file -p <blob-id>
 4. git ls-files -s
 5. git write-tree
 6. git commit-tree
