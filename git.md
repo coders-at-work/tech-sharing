@@ -1,10 +1,10 @@
-#git 进阶
+# git 进阶
 
 ## git 内部数据
-###一. 综述
+### 一. 综述
     本节首先介绍 git 内部使用的数据结构，然后介绍这些数据结构的存储空间，最后介绍一些 git 命令，并使用这些命令，探索 git 数据的生成和存储。
 
-###二. git 数据结构
+### 二. git 数据结构
 1. git 对象
     - 分类
         * blob
@@ -32,7 +32,7 @@
         4. storage-data = compress(storage-data)
 2. 引用: 直接或间接地引用一个 git object
 
-###三. git 存储空间
+### 三. git 存储空间
 1. object store: GIT_DIR/objects
 2. index
     - a binary file
@@ -40,7 +40,7 @@
     - 记录了某一时刻 repository 的整个结构
 3. 引用存储: 主要在 GIT_DIR/refs；还有其它地方
 
-###四. git 数据存储初探
+### 四. git 数据存储初探
 1. 初始没有 index 和　objects
     1. find .git/
     2. find .git/objects
@@ -64,22 +64,22 @@
     3. git add c/
     4. find .git/objects
 
-###五. git config
+### 五. git config
 1. repository config: git config
 2. personal config: git config --global
 3. system config: git config --system
 
 
 ## index 和文件存储
-###一. 总述
+### 一. 总述
     本节首先介绍一些与 index 相关的概念，然后介绍一些有关 index 的命令，最后介绍 git 文件存储的细节
 
-###二. git 项目的文件存储区
+### 二. git 项目的文件存储区
 1. repository (object store)
 2. index
 3. working directory
 
-###三. git 项目文件分类
+### 三. git 项目文件分类
 1. untracked
     - staged
     - unstaged
@@ -90,7 +90,7 @@
     - deleted
     - untouched
 
-###四. 改变 index 的命令
+### 四. 改变 index 的命令
 1. 三个方向
     - 从 working directory 到　index
     - 从 repostitory 到 index
@@ -106,13 +106,13 @@
 4. 直接改变 index: git rm --cached
 
 
-###五. 查看 index 的命令
+### 五. 查看 index 的命令
 1. git status
 2. git ls-files -s
 3. git diff
 4. git diff --cache
 
-###六. git 文件存储
+### 六. git 文件存储
 图
 
 ## branch 和引用
@@ -168,10 +168,10 @@
 
 
 ## git remote
-###一. repository type
+### 一. repository type
 1. bare
 2. development(nonbare)
-###二. git clone
+### 二. git clone
 1. development mode
     - remote local topic branch -> remote-tracking branch
     - remote tags -> tags
@@ -179,15 +179,15 @@
     - remote repository named as 'origin' by default
     - config fetch refspec for origin remote
 2. bare mode: --bare
-###三. git remote
+### 三. git remote
 1. git remote, .git/config, git config
-###四. branch type
+### 四. branch type
 1. remote branch
 2. local branch
     - remote-tracking branch: refs/remotes
     - local-tracking branch: refs/heads
     - topic branch(development branch): refs/heads
-###五. 引用其它 repository
+### 五. 引用其它 repository
 1. remote url
 2. refspec
     - refspec: 'source:dest'
@@ -195,9 +195,9 @@
     - push spec
 3. example
 4. git pull, git fetch, git push
-###六. remote development cycle
+### 六. remote development cycle
 例子
-###七. remote configuration
+### 七. remote configuration
 1. git remote
     - git remote add
     - git remote update
@@ -210,14 +210,14 @@
     - git config remote.<remote-name>.url ''
     - git config remote.<remote-name>.push '+refs/heads/\*:refs/heads/\*'
 3. manual editing config file
-###八. working with tracking branches
+### 八. working with tracking branches
 1. creating tracking branches
     - git checkout -b <local-tracking-branch> --track <remote-tracking-branch>: local can be different with remote branch name
     - git checkout --track <remote-tracking-branch>: local name matching remote branch name
     - git checkout <local-tracking-branch>: local name matching unique remote branch name
     - git branch --track <local-branch> <remote-branch>: create branch without checking out
     - git branch --set-upstream <local-branch> <remote-branch>: setting upstream for existed local-branch
-###九. adding and deleting remote branches
+### 九. adding and deleting remote branches
 1. git push <remote> <source>
 2. git push <remote> <source>:<dest>
     - git push upstream new_dev:new_dev
@@ -225,7 +225,7 @@
 3. git push <remote> :<dest>
 
 
-##Combining Projects
+## Combining Projects
 1. 场景
     - 多个项目 depend on 一个公共的项目
     - 每个项目所 depend on 的公共项目的版本是不同的
