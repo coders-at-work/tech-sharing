@@ -12,7 +12,7 @@
             - 不包含任何元数据（包括文件名，模式）
         * tree
             - 一层目录的结构
-            - 该层目录包含的 path, 其对应的 objcet-id 和 metadata
+            - 该层目录包含的各个 path/file-name, 其对应的 objcet-id 和 metadata
         * commit
             - snapshot
             - author, commiter, commit date, message, tree object, parents
@@ -26,7 +26,7 @@
         * 用 40 个 16 进制字符表示
     - immutable
     - git 对象的生成逻辑
-        1. 生成 header: <object-type> + ' ' + <content-size> + <byte\0>
+        1. 生成 header: [object-type] + ' ' + [content-size] + [byte\0]
         2. storage-data = header + content
         3. object-id = sha1(storage-data)
         4. storage-data = compress(storage-data)
