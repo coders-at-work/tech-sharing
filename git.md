@@ -2,7 +2,7 @@
 
 ## git 内部数据
 ### 一. 综述
-    本节首先介绍 git 内部使用的数据结构，然后介绍这些数据结构的存储空间，最后介绍一些 git 命令，并使用这些命令，探索 git 数据的生成和存储。
+    本节首先介绍 git 内部使用的数据结构，然后介绍这些数据结构的存储空间，最后使用一些 git 命令，探索 git 数据的生成和存储。
 
 ### 二. git 数据结构
 1. git 对象
@@ -15,7 +15,7 @@
             - 该层目录包含的各个 path/file-name, 其对应的 objcet-id 和 metadata
         * commit
             - snapshot
-            - author, commiter, commit date, message, tree object, parents
+            - author, author date, commiter, commit date, message, tree object, parents
         * tag
             - human readable name to a specific object
             - 不等同于 git tag
@@ -26,7 +26,7 @@
         * 用 40 个 16 进制字符表示
     - immutable
     - git 对象的生成逻辑
-        1. 生成 header: [object-type] + ' ' + [content-size] + [byte\0]
+        1. 生成 header: [object-type] + ' ' + [content-size-string] + [byte\0]
         2. storage-data = header + content
         3. object-id = sha1(storage-data)
         4. storage-data = compress(storage-data)
