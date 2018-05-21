@@ -32,7 +32,7 @@
         4. storage-data = compress(storage-data)
 2. 引用: 直接或间接地引用一个 git object
 
-### 三. git 存储空间
+### 三. git 存储空间(git视角)
 1. object store: GIT_DIR/objects
 2. index
     - a binary file
@@ -41,7 +41,7 @@
 3. 引用存储: 主要在 GIT_DIR/refs；还有其它地方
 
 ### 四. git 数据存储初探
-1. 初始没有 index 和　objects
+1. 初始没有 index 和对象
     1. find .git/
     2. find .git/objects
 2. git add 会创建　blobs , 创建或修改 index，但不创建 tree
@@ -74,23 +74,43 @@
 ### 一. 总述
     本节首先介绍一些与 index 相关的概念，然后介绍一些有关 index 的命令，最后介绍 git 文件存储的细节
 
-### 二. git 项目的文件存储区
-1. repository (object store)
+### 二. git 项目的文件存储区(用户视角)
+1. repository (object store, refs)
 2. index
+    - 不包含文件内容
+    - 只 track 要 commit 的清单
+    - 二进制文件
 3. working directory
 
-### 三. git 项目文件分类
-1. untracked
-    - staged
-    - unstaged
+### 三. 理解 index 的关键
+1. index 包含的是文件内容(blob)与路径的对应信息
+    1. git init; find .git/objects/; git ls-files -s
+    2. mkdir dir; echo 'b' > dir/b
+    3. find .git/objects/; git ls-files -s
+    4. git add .
+    5. find .git/objects/; git ls-files -s
+    6. git commit -m "First commit"
+    7. find .git/objects/; git ls-files -s
+2. 无论数据是从　repository 到　working directory，或是相反方向，都要相应修改 indxe
+
+### 四. git 项目文件分类
+1. tracked: staged
 2. ignored
-3. tracked
-    - staged
+3. untracked: not tracked and not ignored
     - unstaged
     - deleted
     - untouched
+4. example
+    1. git init
+    2. echo 'a' > a; git status
+    3. git add .; git commit
+    4. git checkout -b br
+    5. echo 'b' > b; git status
+    6. git add .; git commit
+    7. git checkout master
+    8. echo 'b' > b; git status
 
-### 四. 改变 index 的命令
+### 五. 改变 index 的命令
 1. 三个方向
     - 从 working directory 到　index
     - 从 repostitory 到 index
@@ -106,13 +126,13 @@
 4. 直接改变 index: git rm --cached
 
 
-### 五. 查看 index 的命令
+### 六. 查看 index 的命令
 1. git status
 2. git ls-files -s
 3. git diff
 4. git diff --cache
 
-### 六. git 文件存储
+### 七. git 文件存储
 图
 
 ## branch 和引用
