@@ -1,3 +1,4 @@
+## Overview
 1. Flink 是 Apache 旗下的一个开源项目，是一个分布式的 *流式数据* 和 *批量数据* 处理的 *平台*。它的核心是一个流式数据处理的引擎，然后在其上，构建了批量数据处理的功能和接口。Flink 运行于 jvm 之上，提供了 scala 和 java 的 api.
 2. 流式数据处理和传统的批量数据处理或数据库的区别：
     1. 和批量数据处理的区别
@@ -51,3 +52,21 @@
         * 外部部署应用程序: 通过 Operation Tools，把打包的 jar 文件提交到 jobmanager
             * 同步阻塞式: CLI run
             * 异步非阻塞式（detached mode）: CLI run in detached mode，REST API
+
+## Dataflow Runtime
+### Flink 对数据的处理是分布式和并行的，一个 Dataflow 的处理，在运行时会被分解为多个并发的任务。这些任务在不同层次被设置和管理：
+1. operator subtask -- operator 的并发设置
+    * 一个 operator 在运行时，可以有多个实例，称为 **operator subtask**。每个实例都是独立的，在单独的线程内执行。
+    * 相应的, stream 在运行时，也可以被分解为多个子集，称为 **stream partitions**
+    * operator subtask 的数量称为这个 operator 的 **parallelism**。parallelism 是可以设置的。
+    * 一个简单的 runtime operator subtasks 示例图： ![Operator Subtasks and Stream Partitions](https://ci.apache.org/projects/flink/flink-docs-release-1.3/fig/parallel_dataflow.svg)
+    * 运行时，stream 在经过前后紧邻的两个 operator 时，有两种模式:
+        * One-to-one  不改变 partitioning
+        * Redistributing 改变 partitioning
+    * 不同 operator 的 subtask 是否在同一线程？
+2. operator chain and task
+    * operator 与 thread 的关系：多对多
+3. taskmanager slot
+    * tasks 如何分配到 slots：行式，列式
+    * slot 如何分配给 job ：没有空闲的 slot，不能提交新的 job
+    * job 和 slot 的关系：一对多
